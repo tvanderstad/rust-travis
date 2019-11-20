@@ -6,24 +6,23 @@ pub fn partition<T: Copy>(
     s: usize,
     e: usize,
 ) -> usize {
-    let pivot = items[(e + s) / 2];
+    let pivot = items[(s + e) / 2];
     let mut i = s;
     let mut j = e;
     loop {
-        while is_less(&items[i], &pivot) && i < j {
+        while is_less(&items[i], &pivot) {
             i += 1;
         }
-        while is_less(&pivot, &items[j]) && i < j {
+        while is_less(&pivot, &items[j]) {
             j -= 1;
         }
-        util::swap(items, i, j);
-        if j - i < 2 {
-            break;
+        if i >= j {
+            return j;
         }
+        util::swap(items, i, j);
         i += 1;
         j -= 1;
     }
-    return i;
 }
 
 pub fn quick_sort_recursive<T: Copy>(
@@ -32,11 +31,9 @@ pub fn quick_sort_recursive<T: Copy>(
     s: usize,
     e: usize,
 ) {
-    let m = partition(items, is_less, s, e);
-    if s + 1 < m && m > 1 {
-        quick_sort_recursive(items, is_less, s, m - 1);
-    }
-    if m + 1 < e {
+    if e > s {
+        let m = partition(items, is_less, s, e);
+        quick_sort_recursive(items, is_less, s, m);
         quick_sort_recursive(items, is_less, m + 1, e);
     }
 }

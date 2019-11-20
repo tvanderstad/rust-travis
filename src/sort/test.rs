@@ -12,7 +12,8 @@ macro_rules! test {
             some_duplicate: (&mut [0, 1, 0], &[0, 0, 1]),
             some_duplicate_sorted: (&mut [0, 0, 1], &[0, 0, 1]),
             some_duplicate_reverse_sorted: (&mut [1, 0, 0], &[0, 0, 1]),
-            alternating_duplicate: (&mut [1, 0, 1, 0, 1, 0, 1], &[0, 0, 0, 1, 1, 1, 1]),
+            alternating_duplicate: (&mut [1, 0, 1, 0, 1], &[0, 0, 1, 1, 1]),
+            alternating_duplicate_2: (&mut [0, 1, 0, 1, 0], &[0, 0, 0, 1, 1]),
         }
     };
 }
