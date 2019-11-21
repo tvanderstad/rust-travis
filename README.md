@@ -1,7 +1,7 @@
 # Travis
 Reference implementations for selected algorithms in Rust, authored by Travis.
 
-# Sorts
+## Sorts
 * bubble sort
 * selection sort
 * insertion sort
