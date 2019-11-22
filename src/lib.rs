@@ -1,3 +1,3 @@
-pub mod sort;
 pub mod graph;
+pub mod sort;
 mod util;

@@ -1,2 +1,2 @@
-pub mod graph;
 pub mod generate;
+pub mod graph;
