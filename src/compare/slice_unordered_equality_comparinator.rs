@@ -67,26 +67,26 @@ mod tests {
                 let (input1, input2, expected_result) = $value;
                 assert_eq!(
                     expected_result,
-                    SliceUnorderedEqualityComparinator::are_equal(input1, input2)
+                    SliceUnorderedEqualityComparinator::are_equal(&input1, &input2)
                 );
             }
         };
     }
 
-    test_case! { both_empty: (&[], &[0i32; 0], true)}
-    test_case! { one_empty: (&[], &[99], false)}
-    test_case! { single_same: (&[99], &[99], true)}
-    test_case! { single_different: (&[99], &[100], false)}
-    test_case! { double_same: (&[99, 100], &[99, 100], true)}
-    test_case! { double_different: (&[99, 100], &[99, 101], false)}
-    test_case! { different_length: (&[99], &[99, 100], false)}
-    test_case! { different_length_duplicate: (&[99], &[99, 99], false)}
-    test_case! { one_duplicate: (&[99, 99], &[99, 100], false)}
-    test_case! { both_same_duplicate: (&[99, 99], &[99, 99], true)}
-    test_case! { both_different_duplicate: (&[99, 99], &[100, 100], false)}
-    test_case! { both_same_duplicate_extra_different: (&[99, 99, 101], &[99, 99, 100], false)}
-    test_case! { both_same_duplicate_extra_same: (&[99, 99, 100], &[99, 99, 100], true)}
-    test_case! { both_different_duplicate_extra_same: (&[99, 99, 101], &[100, 100, 101], false)}
-    test_case! { double_same_reordered: (&[99, 100], &[100, 99], true)}
-    test_case! { both_same_duplicate_extra_same_reordered: (&[99, 99, 100], &[100, 99, 99], true)}
+    test_case! { both_empty: ([], [0i32; 0], true)}
+    test_case! { one_empty: ([], [99], false)}
+    test_case! { single_same: ([99], [99], true)}
+    test_case! { single_different: ([99], [100], false)}
+    test_case! { double_same: ([99, 100], [99, 100], true)}
+    test_case! { double_different: ([99, 100], [99, 101], false)}
+    test_case! { different_length: ([99], [99, 100], false)}
+    test_case! { different_length_duplicate: ([99], [99, 99], false)}
+    test_case! { one_duplicate: ([99, 99], [99, 100], false)}
+    test_case! { both_same_duplicate: ([99, 99], [99, 99], true)}
+    test_case! { both_different_duplicate: ([99, 99], [100, 100], false)}
+    test_case! { both_same_duplicate_extra_different: ([99, 99, 101], [99, 99, 100], false)}
+    test_case! { both_same_duplicate_extra_same: ([99, 99, 100], [99, 99, 100], true)}
+    test_case! { both_different_duplicate_extra_same: ([99, 99, 101], [100, 100, 101], false)}
+    test_case! { double_same_reordered: ([99, 100], [100, 99], true)}
+    test_case! { both_same_duplicate_extra_same_reordered: ([99, 99, 100], [100, 99, 99], true)}
 }
