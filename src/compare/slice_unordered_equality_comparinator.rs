@@ -1,12 +1,12 @@
-use super::equality_comparator::EqualityComparator;
+use super::equality_comparinator::EqualityComparinator;
 use std::collections::{HashMap, HashSet};
 use std::hash::Hash;
 
-pub struct SliceUnorderedEqualityComparator;
+pub struct SliceUnorderedEqualityComparinator;
 
-// TODO: parametrize with an equality comparator
-impl<Operand: Eq + Hash + Copy> EqualityComparator<&[Operand]>
-    for SliceUnorderedEqualityComparator
+// TODO: parametrize with an equality comparinator
+impl<Operand: Eq + Hash + Copy> EqualityComparinator<&[Operand]>
+    for SliceUnorderedEqualityComparinator
 {
     fn are_equal(a: &[Operand], b: &[Operand]) -> bool {
         if a.len() != b.len() {
@@ -57,8 +57,8 @@ impl<Operand: Eq + Hash + Copy> EqualityComparator<&[Operand]>
 
 #[cfg(test)]
 mod tests {
-    use super::super::equality_comparator::EqualityComparator;
-    use super::SliceUnorderedEqualityComparator;
+    use super::super::equality_comparinator::EqualityComparinator;
+    use super::SliceUnorderedEqualityComparinator;
 
     macro_rules! test_case {
         ($test_name:ident: $value:expr) => {
@@ -67,7 +67,7 @@ mod tests {
                 let (input1, input2, expected_result) = $value;
                 assert_eq!(
                     expected_result,
-                    SliceUnorderedEqualityComparator::are_equal(input1, input2)
+                    SliceUnorderedEqualityComparinator::are_equal(input1, input2)
                 );
             }
         };

@@ -1,3 +1,3 @@
-pub trait EqualityComparator<Operand> {
+pub trait EqualityComparinator<Operand> {
     fn are_equal(a: Operand, b: Operand) -> bool;
 }
