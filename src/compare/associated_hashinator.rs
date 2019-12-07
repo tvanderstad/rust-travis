@@ -1,9 +1,9 @@
 use super::hashinator::Hashinator;
 use std::hash::{Hash, Hasher};
 
-pub struct NaturalHashinator;
+pub struct AssociatedHashinator;
 
-impl<Operand, OperandHasher: Hasher> Hashinator<Operand, OperandHasher> for NaturalHashinator
+impl<Operand, OperandHasher: Hasher> Hashinator<Operand, OperandHasher> for AssociatedHashinator
 where
     Operand: Hash,
 {
@@ -15,7 +15,7 @@ where
 #[cfg(test)]
 mod tests {
     use super::super::hashinator::Hashinator;
-    use super::NaturalHashinator;
+    use super::AssociatedHashinator;
     use std::collections::hash_map::DefaultHasher;
     use std::hash::Hasher;
 
@@ -26,11 +26,11 @@ mod tests {
                 let (value1, value2, expected_result) = $value;
 
                 let mut hasher = DefaultHasher::new();
-                NaturalHashinator::hash(&value1, &mut hasher);
+                AssociatedHashinator::hash(&value1, &mut hasher);
                 let hash1 = hasher.finish();
 
                 let mut hasher = DefaultHasher::new();
-                NaturalHashinator::hash(&value2, &mut hasher);
+                AssociatedHashinator::hash(&value2, &mut hasher);
                 let hash2 = hasher.finish();
 
                 if expected_result {
