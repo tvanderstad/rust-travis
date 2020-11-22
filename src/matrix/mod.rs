@@ -1,7 +1,7 @@
 pub mod determinant;
 pub mod minor;
 
-#[derive(Debug)]
+#[derive(Debug, PartialEq)]
 pub struct Matrix {
     pub m: Vec<Vec<i32>>,
 }

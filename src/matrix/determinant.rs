@@ -48,71 +48,67 @@ mod test {
 
     #[test]
     fn two_by_two_diagonal() {
-        let matrix = Matrix { m: vec![
-            vec![1, 0],
-            vec![0, 1],
-        ] };
+        let matrix = Matrix {
+            m: vec![vec![1, 0], vec![0, 1]],
+        };
         assert_eq!(1, laplace_expansion(&matrix));
     }
 
     #[test]
     fn two_by_two_diagonal_reverse() {
-        let matrix = Matrix { m: vec![
-            vec![0, 1],
-            vec![1, 0],
-        ] };
+        let matrix = Matrix {
+            m: vec![vec![0, 1], vec![1, 0]],
+        };
         assert_eq!(-1, laplace_expansion(&matrix));
     }
 
     #[test]
     fn three_by_three_diagonal() {
-        let matrix = Matrix { m: vec![
-            vec![1, 0, 0],
-            vec![0, 1, 0],
-            vec![0, 0, 1],
-        ] };
+        let matrix = Matrix {
+            m: vec![vec![1, 0, 0], vec![0, 1, 0], vec![0, 0, 1]],
+        };
         assert_eq!(1, laplace_expansion(&matrix));
     }
 
     #[test]
     fn three_by_three_diagonal_reverse() {
-        let matrix = Matrix { m: vec![
-            vec![0, 0, 1],
-            vec![0, 1, 0],
-            vec![1, 0, 0],
-        ] };
+        let matrix = Matrix {
+            m: vec![vec![0, 0, 1], vec![0, 1, 0], vec![1, 0, 0]],
+        };
         assert_eq!(-1, laplace_expansion(&matrix));
     }
 
     #[test]
     fn three_by_three_singular() {
-        let matrix = Matrix { m: vec![
-            vec![1, 2, 3],
-            vec![4, 5, 6],
-            vec![7, 8, 9],
-        ] };
+        let matrix = Matrix {
+            m: vec![vec![1, 2, 3], vec![4, 5, 6], vec![7, 8, 9]],
+        };
         assert_eq!(0, laplace_expansion(&matrix));
     }
 
     #[test]
     fn four_by_four_diagonal() {
-        let matrix = Matrix { m: vec![
-            vec![1, 0, 0, 0],
-            vec![0, 1, 0, 0],
-            vec![0, 0, 1, 0],
-            vec![0, 0, 0, 1],
-        ] };
+        let matrix = Matrix {
+            m: vec![
+                vec![1, 0, 0, 0],
+                vec![0, 1, 0, 0],
+                vec![0, 0, 1, 0],
+                vec![0, 0, 0, 1],
+            ],
+        };
         assert_eq!(1, laplace_expansion(&matrix));
     }
 
     #[test]
     fn four_by_four_singular() {
-        let matrix = Matrix { m: vec![
-            vec![1, 2, 3, 4],
-            vec![5, 6, 7, 8],
-            vec![9, 10, 11, 12],
-            vec![13, 14, 15, 16],
-        ] };
+        let matrix = Matrix {
+            m: vec![
+                vec![1, 2, 3, 4],
+                vec![5, 6, 7, 8],
+                vec![9, 10, 11, 12],
+                vec![13, 14, 15, 16],
+            ],
+        };
         assert_eq!(0, laplace_expansion(&matrix));
     }
 }
