@@ -45,7 +45,7 @@ pub fn quick_sort<T: Copy>(items: &mut [T], is_less: impl Fn(&T, &T) -> bool) {
 }
 
 #[cfg(test)]
-mod quick_sort_tests {
+mod test {
     use super::quick_sort;
     use crate::permute::steinhaus_johnson_trotter::SteinhausJohnsonTrotter;
     use crate::permute::Permutation;

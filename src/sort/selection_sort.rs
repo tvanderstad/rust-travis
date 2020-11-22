@@ -15,7 +15,7 @@ pub fn selection_sort<T: Copy>(items: &mut [T], is_less: impl Fn(&T, &T) -> bool
 }
 
 #[cfg(test)]
-mod selection_sort_tests {
+mod test {
     use super::selection_sort;
     use crate::permute::steinhaus_johnson_trotter::SteinhausJohnsonTrotter;
     use crate::permute::Permutation;

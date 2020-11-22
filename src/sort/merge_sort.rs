@@ -57,7 +57,7 @@ pub fn merge_sort<T: Copy>(items: &mut [T], is_less: impl Fn(&T, &T) -> bool) {
 }
 
 #[cfg(test)]
-mod merge_sort_tests {
+mod test {
     use super::merge_sort;
     use crate::permute::steinhaus_johnson_trotter::SteinhausJohnsonTrotter;
     use crate::permute::Permutation;
