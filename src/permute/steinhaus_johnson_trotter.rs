@@ -70,3 +70,45 @@ fn is_mobile(permutation: &Permutation, directions: &[bool], i: usize) -> bool {
         }
     }
 }
+
+#[cfg(test)]
+mod test {
+    use super::SteinhausJohnsonTrotter;
+    use crate::permute::Permutation;
+    use crate::permute::test::TEST_LEN_PERMUTATION;
+    use crate::permute::is_even::is_even;
+
+    #[test]
+    fn empty() {
+        assert_eq!(vec![Permutation::new(0)], SteinhausJohnsonTrotter::new(0).collect::<Vec<Permutation>>())
+    }
+
+    #[test]
+    fn one() {
+        assert_eq!(vec![Permutation::new(1)], SteinhausJohnsonTrotter::new(1).collect::<Vec<Permutation>>())
+    }
+
+    #[test]
+    fn two() {
+        assert_eq!(vec![Permutation{ v: vec![0, 1] }, Permutation{ v: vec![1, 0] }], SteinhausJohnsonTrotter::new(2).collect::<Vec<Permutation>>())
+    }
+
+    #[test]
+    fn three() {
+        assert_eq!(vec![
+            Permutation{ v: vec![0, 1, 2] },
+            Permutation{ v: vec![0, 2, 1] },
+            Permutation{ v: vec![2, 0, 1] },
+            Permutation{ v: vec![2, 1, 0] },
+            Permutation{ v: vec![1, 2, 0] },
+            Permutation{ v: vec![1, 0, 2] },
+        ], SteinhausJohnsonTrotter::new(3).collect::<Vec<Permutation>>())
+    }
+
+    #[test]
+    fn alternating_even() {
+        for (i, p) in SteinhausJohnsonTrotter::new(TEST_LEN_PERMUTATION).enumerate() {
+            assert!((i % 2 != 0) ^ is_even(&p))
+        }
+    }
+}

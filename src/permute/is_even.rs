@@ -10,10 +10,11 @@ pub fn is_even(p: &Permutation) -> bool {
 mod test {
     use super::is_even;
     use crate::permute::Permutation;
+    use crate::permute::test::TEST_LEN_PERMUTATION;
 
     #[test]
     fn ordered() {
-        for i in 0..6 {
+        for i in 0..TEST_LEN_PERMUTATION {
             assert!(is_even(&Permutation::new(i)));
         }
     }
